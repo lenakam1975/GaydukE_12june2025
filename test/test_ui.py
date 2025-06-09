@@ -1,8 +1,5 @@
 import pytest
 import allure
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.support.wait import WebDriverWait
 
 from constants import *
 
@@ -19,10 +16,7 @@ def test_open_basket(main_page):
 
     with allure.step("Подождать появления модального окна корзины"):
         try:
-            wait = WebDriverWait(main_page.driver, 20)
-            basket_modal = wait.until(
-                EC.visibility_of_element_located((By.CSS_SELECTOR, 'div.modal.order_modal'))
-            )
+            basket_modal = main_page.basket_modal()
             assert basket_modal.is_displayed(), "Модальное окно корзины не появилось"
         except TimeoutException as e:
             raise AssertionError(f"Тайм-аут ожидания появления модального окна корзины: {e}")
@@ -33,8 +27,8 @@ def test_open_basket(main_page):
 @allure.severity("Critical")
 @allure.title("Добавить продукт")
 @allure.story("Добавить продукт в корзину")
-@allure.feature("Кнопка В корзину")
-@allure.description("Добавление продукта в корзину")
+@allure.feature("Кнопка 'В корзину'")
+@allure.description("Добавление продукта в корзину c главной страницы, нажав кнопку 'В корзину'")
 def test_products(main_page):
     with allure.step("Добавить продукт, нажав кнопку 'В корзину'"):
         main_page.add_to_basket()
@@ -43,7 +37,8 @@ def test_products(main_page):
         basket_count = main_page.check_quantity_to_basket()
 
     expected_quantity = "1 шт"
-    with allure.step("Проверить наличие добавленного продукта в корзине"):
+    with allure.step("Проверить фактическое количество товаров в корзине (basket_count) "
+                     "с ожидаемым количеством (expected_quantity)"):
         assert basket_count == expected_quantity, (
             f"Количество товаров в корзине отличается от ожидаемого ({expected_quantity}). "
             f"Фактическое количество: {basket_count}")
@@ -51,7 +46,7 @@ def test_products(main_page):
 
 @pytest.mark.ui
 @allure.id("MainPage-3")
-@allure.severity("critical")
+@allure.severity("blocker")
 @allure.title("Заполнение формы отправки")
 @allure.story("Заполнение формы отправки данными пользователя")
 @allure.feature("Форма отправки данных")
@@ -75,22 +70,19 @@ def test_input(main_page):
 
 @pytest.mark.ui
 @allure.id("MainPage-4")
-@allure.severity("Critical")
+@allure.severity("Minor")
 @allure.title("Переход в раздел продукция")
 @allure.story("Переход с главной страницы в раздел продукция")
-@allure.feature("раздел 'продукция'")
-@allure.description("Функциональность кнопки 'продукция' на главной странице")
+@allure.feature("раздел 'Продукция'")
+@allure.description("Функциональность кнопки 'Продукция' на главной странице")
 def test_products(main_page):
     with allure.step("Нажать на кнопку 'продукция'"):
         main_page.click_products()
 
     with allure.step("Подождать появления блока 'Наша продукция'"):
         try:
-            wait = WebDriverWait(main_page.driver, 30)
-            blok_products = wait.until(
-                EC.visibility_of_element_located((By.CSS_SELECTOR, '#products'))
-            )
-            assert blok_products.is_displayed(), "Блок 'Наша продукция' не появился"
+            blok_products = main_page.blok_products()
+            assert blok_products.is_displayed(), f"Блок 'Наша продукция' не появился"
         except TimeoutException as e:
             raise AssertionError(f"Тайм-аут ожидания появления блока 'Наша продукция': {e}")
 
@@ -99,7 +91,7 @@ def test_products(main_page):
 @allure.id("MainPage-5")
 @allure.severity("Minor")
 @allure.title("Кнопка возврата Наверх")
-@allure.story("Возврат с нижней части страницы вверх, нажав кнопку Наверх")
+@allure.story("Возврат с нижней части страницы вверх, нажав на появляющуюся кнопку 'Наверх'")
 @allure.feature("кнопка Наверх")
 @allure.description("Функциональность кнопки 'Наверх' на главной странице")
 def test_click_up(main_page):
@@ -107,8 +99,8 @@ def test_click_up(main_page):
         main_page.click_up()
 
     with allure.step("Подождать появления блока header"):
-        wait = WebDriverWait(main_page.driver, 30)
-        blok_header = wait.until(
-            EC.visibility_of_element_located((By.CSS_SELECTOR, 'div.header-block.flex'))
-        )
-        assert blok_header.is_displayed(), "Блок header не появился"
+        try:
+            block_header = main_page.block_header()
+            assert block_header.is_displayed(), f"Блок header не появился"
+        except TimeoutException as e:
+            raise AssertionError(f"Тайм-аут ожидания появления блока header: {e}")

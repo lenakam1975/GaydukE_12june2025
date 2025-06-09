@@ -4,8 +4,7 @@ from selenium.webdriver.chrome.service import Service as ChromeService
 from webdriver_manager.chrome import ChromeDriverManager
 
 from class_MainPage import MainPage
-# from class_basketAPI import BasketApi
-# from constants import *
+
 
 @pytest.fixture(scope="session")
 def browser():
