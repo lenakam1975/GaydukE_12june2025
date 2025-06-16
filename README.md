@@ -28,7 +28,7 @@
 - [Генератор файла .gitignore](https://www.toptal.com/developers/gitignore)
 - [Статья о команде pytest](https://pytest-docs-ru.readthedocs.io/ru/latest/usage.html)
 
-### Библиотеки (!)
+### Библиотеки
 - pyp install pytest
 - pip install selenium
 - pip install webdriver-manager
