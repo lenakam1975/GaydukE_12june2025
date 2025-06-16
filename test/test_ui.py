@@ -1,17 +1,19 @@
 import pytest
 import allure
+from selenium.common.exceptions import TimeoutException
 
-from constants import *
+from constants import NAME_ANY, PHONE_NUMBER
+
 
 @pytest.mark.ui
 @allure.id("MainPage-1")
 @allure.severity("blocker")
 @allure.title("Переход в корзину")
 @allure.story("Переход с главной страницы в корзину")
-@allure.feature("кнопка 'корзина'")
-@allure.description("Функциональность кнопки 'корзина' на главной странице")
+@allure.feature("Корзина")
+@allure.description("Функциональность кнопки 'Корзина' на главной странице")
 def test_open_basket(main_page):
-    with allure.step("Нажать на кнопку 'корзина'"):
+    with allure.step("Нажать на кнопку 'Корзина'"):
         main_page.open_basket()
 
     with allure.step("Подождать появления модального окна корзины"):
@@ -29,7 +31,7 @@ def test_open_basket(main_page):
 @allure.story("Добавить продукт в корзину")
 @allure.feature("Кнопка 'В корзину'")
 @allure.description("Добавление продукта в корзину c главной страницы, нажав кнопку 'В корзину'")
-def test_products(main_page):
+def test_add_products(main_page):
     with allure.step("Добавить продукт, нажав кнопку 'В корзину'"):
         main_page.add_to_basket()
     with allure.step("Открыть корзину и убедиться, что количество добавленного товара = 1 шт"):
@@ -73,16 +75,16 @@ def test_input(main_page):
 @allure.severity("Minor")
 @allure.title("Переход в раздел продукция")
 @allure.story("Переход с главной страницы в раздел продукция")
-@allure.feature("раздел 'Продукция'")
+@allure.feature("Раздел 'Продукция'")
 @allure.description("Функциональность кнопки 'Продукция' на главной странице")
-def test_products(main_page):
+def test_click_products(main_page):
     with allure.step("Нажать на кнопку 'продукция'"):
         main_page.click_products()
 
     with allure.step("Подождать появления блока 'Наша продукция'"):
         try:
             blok_products = main_page.blok_products()
-            assert blok_products.is_displayed(), f"Блок 'Наша продукция' не появился"
+            assert blok_products.is_displayed(), "Блок 'Наша продукция' не появился"
         except TimeoutException as e:
             raise AssertionError(f"Тайм-аут ожидания появления блока 'Наша продукция': {e}")
 
@@ -91,8 +93,9 @@ def test_products(main_page):
 @allure.id("MainPage-5")
 @allure.severity("Minor")
 @allure.title("Кнопка возврата Наверх")
-@allure.story("Возврат с нижней части страницы вверх, нажав на появляющуюся кнопку 'Наверх'")
-@allure.feature("кнопка Наверх")
+@allure.story("Возврат с нижней части страницы вверх, "
+              "нажав на появляющуюся кнопку 'Наверх'")
+@allure.feature("Кнопка 'Наверх'")
 @allure.description("Функциональность кнопки 'Наверх' на главной странице")
 def test_click_up(main_page):
     with allure.step("Нажать на кнопку 'Наверх'"):
@@ -101,6 +104,6 @@ def test_click_up(main_page):
     with allure.step("Подождать появления блока header"):
         try:
             block_header = main_page.block_header()
-            assert block_header.is_displayed(), f"Блок header не появился"
+            assert block_header.is_displayed(), "Блок header не появился"
         except TimeoutException as e:
             raise AssertionError(f"Тайм-аут ожидания появления блока header: {e}")

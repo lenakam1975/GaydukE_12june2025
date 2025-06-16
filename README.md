@@ -23,7 +23,7 @@
 - ./api - хелперы для работы с API
 
 ### Полезные ссылки
-- [Тест-план](https://len4ik.yonote.ru/doc/test-plan-P28OclqAvQ)
+- [Тест-план](https://len4ik.yonote.ru/share/89b1592c-5e8c-48b8-ae6a-cacfb412d248)
 - [Подсказка по markdown](https://www.markdownguide.org/basic-syntax/)
 - [Генератор файла .gitignore](https://www.toptal.com/developers/gitignore)
 - [Статья о команде pytest](https://pytest-docs-ru.readthedocs.io/ru/latest/usage.html)

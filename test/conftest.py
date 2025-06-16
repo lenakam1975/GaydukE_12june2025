@@ -21,12 +21,3 @@ def main_page(browser):
     page = MainPage(browser)
     page.open()
     return page
-
-
-# @pytest.fixture
-# def basket_api():
-#     basket_api = BasketApi(
-#         base_url=BASE_URL,
-#         id_cookie=ID_COOKIE,
-#         id_product=ID_PRODUCT)
-#     return basket_api

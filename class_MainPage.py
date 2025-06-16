@@ -22,7 +22,8 @@ class MainPage:
     def block_header(self):
         wait = WebDriverWait(self.driver, 30)
         block_header = wait.until(
-            EC.visibility_of_element_located((By.CSS_SELECTOR, 'div.header-block.flex'))
+            EC.visibility_of_element_located((
+                By.CSS_SELECTOR, 'div.header-block.flex'))
         )
         return block_header
 
@@ -41,7 +42,8 @@ class MainPage:
     def click_up(self):
         self.driver.execute_script("window.scrollBy(0, 1000);")
         wait = WebDriverWait(self.driver, 10)
-        button_up = wait.until(EC.visibility_of_element_located((By.CLASS_NAME, "up")))
+        button_up = wait.until(
+            EC.visibility_of_element_located((By.CLASS_NAME, "up")))
         button_up.click()
 
     def add_to_basket(self):
@@ -53,7 +55,8 @@ class MainPage:
     def basket_modal(self):
         wait = WebDriverWait(self.driver, 20)
         basket_modal = wait.until(
-            EC.visibility_of_element_located((By.CSS_SELECTOR, 'div.modal.order_modal'))
+            EC.visibility_of_element_located((
+                By.CSS_SELECTOR, 'div.modal.order_modal'))
         )
         return basket_modal
 
@@ -63,14 +66,17 @@ class MainPage:
         return text_content
 
     def input_text(self, name, phone):
-        input_name = self.driver.find_element(By.CSS_SELECTOR, ".req_bask.name_order_bask")
+        input_name = self.driver.find_element(
+            By.CSS_SELECTOR, ".req_bask.name_order_bask")
         input_name.clear()
         input_name.send_keys(name)
-        input_phone = self.driver.find_element(By.CSS_SELECTOR, ".ph.req_bask.phone_order_bask")
+        input_phone = self.driver.find_element(
+            By.CSS_SELECTOR, ".ph.req_bask.phone_order_bask")
         input_phone.clear()
         input_phone.send_keys(str(phone))
         return name, phone
 
     def button_send(self):
-        element = self.driver.find_element(By.CSS_SELECTOR, ".btn.btn_fill.js-fast-order-btn")
+        element = self.driver.find_element(
+            By.CSS_SELECTOR, ".btn.btn_fill.js-fast-order-btn")
         element.click()
