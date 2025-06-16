@@ -1,0 +1,164 @@
+{
+	"id": "845546a1-c41c-49c9-98d0-b2d0e637cfd7",
+	"name": "Dikoros_DC",
+	"timestamp": "2025-06-16T17:58:45.743Z",
+	"collection_id": "38979141-ae6791c3-7efc-4442-b35e-333322d296c0",
+	"folder_id": 0,
+	"environment_id": "0",
+	"totalPass": 7,
+	"delay": 0,
+	"persist": true,
+	"status": "finished",
+	"startedAt": "2025-06-16T17:58:42.994Z",
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "6b2ec2d1-3ee1-4e3c-bb3a-8edb99784af8",
+			"name": "Добавление товара в корзину",
+			"url": "https://www.sibdar-spb.ru/ajax/basketOrder.php",
+			"time": 543,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Body is correct": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body is correct": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				543
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Body is correct": true
+				}
+			]
+		},
+		{
+			"id": "064af134-eb38-4806-a298-1a353bf4703c",
+			"name": "Изменение количества товара в корзине",
+			"url": "https://www.sibdar-spb.ru/ajax/basketOrder.php",
+			"time": 456,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Body is correct": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body is correct": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				456
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Body is correct": true
+				}
+			]
+		},
+		{
+			"id": "26c864aa-880e-466e-9842-4beb206c3b6f",
+			"name": "Удаление товара",
+			"url": "https://www.sibdar-spb.ru/ajax/basketOrder.php",
+			"time": 200,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Body is correct": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body is correct": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				200
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Body is correct": true
+				}
+			]
+		},
+		{
+			"id": "6ac50a40-a05c-4046-a011-663dd8fc4fff",
+			"name": "Просмотр корзины",
+			"url": "https://www.sibdar-spb.ru/ajax/basketList.php",
+			"time": 200,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				200
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 1399,
+	"collection": {
+		"requests": [
+			{
+				"id": "6b2ec2d1-3ee1-4e3c-bb3a-8edb99784af8",
+				"method": "POST"
+			},
+			{
+				"id": "064af134-eb38-4806-a298-1a353bf4703c",
+				"method": "POST"
+			},
+			{
+				"id": "26c864aa-880e-466e-9842-4beb206c3b6f",
+				"method": "POST"
+			},
+			{
+				"id": "6ac50a40-a05c-4046-a011-663dd8fc4fff",
+				"method": "POST"
+			}
+		]
+	}
+}
